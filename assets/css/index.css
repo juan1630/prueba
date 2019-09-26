@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 100;
+}
+
+.title {
+    font-size: 2em;
+    text-align: center;
+    padding: 2px;
+    margin-top: 10px;
+}
+
+.container {
+    width: 25%;
+    margin: 6em auto;
+    /* display: grid;
+    gap: 1.6em;
+    border: 1px solid black;
+    grid-template-columns: repeat(1, 5fr); */
+}
+
+.container>.controls {
+    padding: 10px;
+    grid-column: span 2;
+}
+
+.form-control {
+    border-radius: 3px;
+    padding: 1px;
+    width: 100%;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.btn-send {
+    display: inline-block;
+    background: green;
+    border: none;
+    width: 100%;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+}
