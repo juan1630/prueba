@@ -2,47 +2,54 @@
 <?php require_once '../components/sidebar.php';  ?>
 
 
-    <h2>Agrega el producto</h2>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-5 offset-md-3">
 
-                <form   id="formulario" >
+                <form id="formulario" >
+
+                <h2 class="center" >Agrega el producto</h2>
+
 
                 <div class="form-group">
                     <label for="nombre" > Nombre del producto: </label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre del producto">
+                    <input type="text"  class="form-control" id="nombre" name="nombre" placeholder="Nombre del producto">
                 </div>
 
                 <div class="form-group">
                     <label for="marca" > Maraca del producto: </label>
-                    <input type="text" id="marca" name="marca" placeholder="Marca del producto">
+                    <input type="text" class="form-control" id="marca" name="marca" placeholder="Marca del producto">
                 </div>
 
                 <div class="form-group">
                     <label for="compra" > Precio de compra: </label>
-                    <input type="number" id="compra" name="compra" placeholder="Precio de compra" min="0">
+                    <input type="number" class="form-control" id="compra" name="compra" placeholder="Precio de compra" min="0">
                 </div>
 
 
                 <div class="form-group">
                     <label for="venta" > Precio de venta: </label>
-                    <input type="number" id="venta" name="venta" min="0" placeholder="Precio de venta">
+                    <input type="number" class="form-control" id="venta" name="venta" min="0" placeholder="Precio de venta">
                 </div>
 
                 <div class="form-group">
                     <label for="cantidad" > Cantidad </label>
-                    <input type="number" id="cantidad" min="0" name="cantidad" placeholder="Cantidad del producto">
+                    <input type="number" class="form-control" id="cantidad" min="0" name="cantidad" placeholder="Cantidad del producto">
                 </div>
+                
+                <div class="form-group">
+                    <label for="total" > Total: </label>
+                        <div id="total">
+                        </div>
+                
+                </div>
+                
 
                 <div class="form-group">
                     <label for="Imagen" > Imagen  </label>
-                    <input type="file" id="Imagen" name="Imagen" placeholder="Imagen del producto">
+                    <input type="file" class="form-control" id="Imagen" />
                 </div>
-
-
-                    <!-- <button type="submit" class="btn btn-block btn-info"> Registrar </button> -->
 
                     <input type="submit" id="btnEnvio" value="Enviar" class="btn btn-info btn-block" />
 
@@ -56,11 +63,15 @@
 
         const formEnvio = document.getElementById('formulario');
         const btnEnvio = document.getElementById('btnEnvio');
+        const total = document.getElementById('total');
+        const btnCantidad = document.getElementById('cantidad');
+
+
+        console.log( total )
 
 
         const validar = function(aForm){
             
-
             if( aForm.get('nombre') == null || aForm.get('nombre').length == 0 ){
                 alert('Falta algun campo')
                 validado = false;
@@ -76,7 +87,11 @@
             }else if(aForm.get('cantidad') == ""  ){
                 alert('Falta algún campo')
                 validado = false;
+            }else if( aForm.get('toal') == "" ){
+                valido = false;
+                alert ("El campo total está vacio")
             }
+            
           return  validado = true;
         }
 
@@ -89,17 +104,23 @@ const sendData = function (datos) {
     config = {
         method: 'POST',
          body: datos
+
     }
+
+
+    
+    products = [];
 
     fetch( url,  config)
     
     .then( (resp) => {
 
-        console.log( resp.json() )
+        console.log( resp )
+        return resp.json();
         
     })
     
-    .then( res => {
+    .then( (res) => {
           console.log( res );
     })
     
@@ -125,6 +146,33 @@ const sendData = function (datos) {
         }
         
         
+        })
+
+
+        // Termina el script del formulario
+        var resultado = 0
+
+
+        btnCantidad.addEventListener ('blur', () => {
+            let cantidad = parseInt(document.getElementById('cantidad').value)
+            let venta = parseInt( document.getElementById('venta').value )
+            
+
+            if(!cantidad == "" || !cantidad === null ){
+                if(!venta == "" || !venta == null  ){
+                    
+                    
+                    resultado = cantidad * venta;
+                    total.innerHTML= `<input type="number" name="total" class="form-control"  value="${resultado}" />`;
+                
+                }else {
+
+                    alert('Algún campo no es correcto');
+                    
+                
+                }
+            }
+
         })
 
 

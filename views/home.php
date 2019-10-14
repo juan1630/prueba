@@ -3,12 +3,12 @@
 
 
 <div class="container">
-<div class="row">
-    <div class="col-md-12">
-        <div id="showPeoducts" >
+<div  id="showPeoducts" class="row">
+    <!-- <div  class="col-md-12"> -->
+        <!-- <div  >
         
-        </div>
-    </div>
+        </div> -->
+    <!-- </div> -->
 </div>
 
 </div>
@@ -22,29 +22,43 @@
     
 
         const renderCard = function (data) {
+            
+            // console.log(data[0])
+            
+            for ( i in data ){
+                
+                showProducts.innerHTML += `
+                <div class="col-md-3 mt-3 mr-3">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"> Nombre: ${ data[i].nombreProducto} </h5>
+                            <p class="card-text"> Marca: ${ data[i].marcaProducto } </p>
+                            <p class="card-text">Precio compra: ${data[i].precioVenta }  </p>
+                            <p class="card-text">Precio compra: ${data[i].precioCompra }  </p>
+                        </div>
+                    </div>
+                </div>`;
+                
 
-            showProducts.innerHTML= `<div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title"> Nombre: ${ data.nombreProducto} </h5>
-                <p class="card-text"> Marca: ${ data.marcaProducto } </p>
-                <p class="card-text">Precio compra: ${data.precioVenta }  </p>
-                <p class="card-text">Precio compra: ${data.precioCompra }  </p>
-            </div>
-            </div>`;
+            }
+        
         }
 
         const getData = function (){
             fetch('../controls/queries/getProducts.php')
             .then((resp)=>{ 
-            
-            console.log(resp)
+
+            console.log( resp );
+        
+        
             return respuesta = resp.json()
 
             })
+
             .then( (respuesta) => {
-                
-                console.log(respuesta)
-                renderCard(respuesta);
+
+                console.log( respuesta )
+                renderCard(respuesta)
 
             })
             .catch( (error)=>{

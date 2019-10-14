@@ -11,11 +11,12 @@ if( isset($_POST) ){
     $compra = $_POST['compra'];
     $venta = $_POST['venta'];
     $cantidad = $_POST['cantidad'];
+    $total = $_POST['total'];
 
 
     //     echo $cantidad;
     
-    $insertData = new InsertData($nombre, $marca, $venta, $compra, $cantidad);
+    $insertData = new InsertData($nombre, $marca, $venta, $compra, $cantidad, $total);
     $resp = $insertData->insertProduct();
 
 

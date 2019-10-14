@@ -7,28 +7,44 @@ class GetData {
     
     function getData(){
     
-        $rows[] = null;
+        $rows = [];
             
         $conected = new Conect("jose", "eltodasmias16");
         $conect = $conected->conectar();
-        
-        
+
+
+        // ANOTACIÓN 
+
+        // Senetencia para qiue solo devuelva un cierto número de registros 
+        // se hace con el limit
+
+        // Ejemplo:  
+
+        // SELECT * FROM producto LIMIT 5;
+
+
         $sql = "SELECT * FROM producto";
     
         $statemnet = $conect->prepare($sql);
         $statemnet->execute();
     
+
+
         while($result = $statemnet->fetch(PDO::FETCH_ASSOC)){
-            $rows = $result;
+            
+            array_push( $rows, $result );
+
+                // Sintaxis del array push
         }
     
-        // $json_send = json_encode($rows);
-        // return $json_send;
-        
+
         return $rows;
     
     }
 
 }
+
+
+
 
 ?>
