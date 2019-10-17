@@ -1,6 +1,7 @@
 <?php  require_once '../includes/components/header.php' ?> 
 <?php require_once './components/sidebar.php';  ?>
 
+<div class="col-md-10">
 
 <div class="container">
 <div  id="showPeoducts" class="row">
@@ -9,6 +10,8 @@
         
         </div> -->
     <!-- </div> -->
+</div>
+
 </div>
 
 </div>
@@ -28,7 +31,7 @@
             for ( i in data ){
                 
                 showProducts.innerHTML += `
-                <div class="col-md-3 mt-3 mr-3">
+                <div class="col-md-3 mt-3">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"> Nombre: ${ data[i].nombreProducto} </h5>
@@ -48,25 +51,19 @@
             fetch('../controls/queries/getProducts.php')
             .then((resp)=>{ 
 
-            console.log( resp );
-        
-        
+            console.log( resp )
             return respuesta = resp.json()
 
             })
-
             .then( (respuesta) => {
-
-                console.log( respuesta )
                 renderCard(respuesta)
-
             })
+
             .catch( (error)=>{
                 console.log(error);
 
             } );
-            
-            }
+            };
 
     getData();
 

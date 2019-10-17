@@ -1,8 +1,8 @@
 <?php  require_once '../../includes/components/header.php' ?> 
-<?php require_once '../components/sidebar.php';  ?>
+<?php require_once '../components/sidebar.php' ?>
 
 
-
+<div class="col-md-9">
     <div class="container">
         <div class="row">
             <div class="col-md-5 offset-md-3">
@@ -57,7 +57,9 @@
             </div>
         </div>
     </div>
-    
+    </div>
+
+    <?php  require_once  '../../includes/components/footer.php'  ?>
 
 <script>
 
