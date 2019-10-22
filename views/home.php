@@ -26,18 +26,19 @@
 
         const renderCard = function (data) {
             
-            // console.log(data[0])
+            console.log(data[0])
             
             for ( i in data ){
                 
                 showProducts.innerHTML += `
-                <div class="col-md-3 mt-3">
+                <div class="col-md-3 mt-3 ml-2">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"> Nombre: ${ data[i].nombreProducto} </h5>
                             <p class="card-text"> Marca: ${ data[i].marcaProducto } </p>
                             <p class="card-text">Precio compra: ${data[i].precioVenta }  </p>
                             <p class="card-text">Precio compra: ${data[i].precioCompra }  </p>
+                            <p class="card-text"> Cantidad del producto:  ${data[i].cantidad } </p>
                         </div>
                     </div>
                 </div>`;

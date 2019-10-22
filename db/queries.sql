@@ -1,4 +1,5 @@
 
+-- use papelreria;
 
 -- Creamos la tablas de los proudctos
 
@@ -11,3 +12,13 @@
 -- cantidad int(100) not null,
 -- constraint pk_producto primary key (id)
 -- );
+
+-- describe Producto;
+
+-- alter table Producto add total numeric;
+
+-- alter table Producto add descripcion varchar(255);
+
+-- alter table Producto add totalVenta numeric;
+
+-- select sum( total ) as total, sum( precioCompra )  as compraTotal, sum( precioVenta ) as totalVenta from Producto;

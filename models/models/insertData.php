@@ -10,9 +10,11 @@ class InsertData {
     public $compra;
     public $cantidad = 0;
     public $total;
+    public $descripcion;
+    public $totalesVenta = 0;
+
     
-    
-    function __construct($arNombre, $arMarca, $arVenta, $arCompra, $arCantidad, $total) {
+    function __construct($arNombre, $arMarca, $arVenta, $arCompra, $arCantidad, $total, $descripcion, $arTotalesVenta) {
 
         $this->nombre = $arNombre;
         $this->marca = $arMarca;
@@ -20,6 +22,8 @@ class InsertData {
         $this->compra = $arCompra;
         $this->cantidad = $arCantidad;
         $this->total = $total;
+        $this->totalesVenta = $arTotalesVenta;
+        $this->descripcion = $descripcion;
 
     }
 
@@ -29,7 +33,7 @@ class InsertData {
         
         $conected = new Conect("jose", "eltodasmias16");
         $conect = $conected->conectar();
-        $data = [ $this->nombre, $this->marca, $this->compra, $this->venta, $this->cantidad, $this->total ];
+        $data = [ $this->nombre, $this->marca, $this->compra, $this->venta, $this->cantidad, $this->total, $this->descripcion, $this->totalesVenta ];
 
         $error = false;
         $ok = false;
@@ -37,14 +41,14 @@ class InsertData {
         try {
 
         
-        $consulta = "INSERT INTO Producto VALUES (null,?, ?, ?, ?, ?, ? )";
+        $consulta = "INSERT INTO Producto VALUES (null,?, ?, ?, ?, ?, ?, ?, ? )";
         $consultaPreparada = $conect->prepare($consulta);
         $result = $consultaPreparada->execute($data);
         
     
         if($result){
 
-            return  "producto insertado";
+            return  "Producto insertado";
 
 
         }else {

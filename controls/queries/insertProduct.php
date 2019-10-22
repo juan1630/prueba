@@ -10,13 +10,14 @@ if( isset($_POST) ){
     $marca = $_POST['marca'];
     $compra = $_POST['compra'];
     $venta = $_POST['venta'];
-    $cantidad = $_POST['cantidad'];
-    $total = $_POST['total'];
+   $cantidad = $_POST['cantidad'];
+    $totalVenta = $_POST['totalesVenta'];
+    $descripcion = $_POST['descripcion'];
+    $totalesCompras = $_POST['compraTotales'];
 
 
-    //     echo $cantidad;
     
-    $insertData = new InsertData($nombre, $marca, $venta, $compra, $cantidad, $total);
+    $insertData = new InsertData($nombre, $marca  , $compra, $venta, $cantidad, $totalesCompras,$descripcion ,$totalVenta );
     $resp = $insertData->insertProduct();
 
 
@@ -28,7 +29,7 @@ if( isset($_POST) ){
         
     }else {
     
-        echo "paso algo";
+        echo "Pasó algo";
     
     }
 
