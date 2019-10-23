@@ -68,7 +68,7 @@
 
                         <div class="form-group">
                             <label for="Imagen" > Imagen  </label>
-                            <input type="file" class="form-control" id="Imagen" />
+                            <input type="file"name="imagen"  class="form-control" id="Imagen" />
                         </div>
 
                         <input type="submit" id="btnEnvio" value="Enviar" class="btn btn-info btn-block" />

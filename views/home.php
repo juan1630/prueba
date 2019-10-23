@@ -3,7 +3,7 @@
 
 <div class="col-md-10">
 
-<div class="container">
+<div class="container-fluid">
 <div  id="showPeoducts" class="row">
     <!-- <div  class="col-md-12"> -->
         <!-- <div  >
@@ -34,11 +34,13 @@
                 <div class="col-md-3 mt-3 ml-2">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
+
                             <h5 class="card-title"> Nombre: ${ data[i].nombreProducto} </h5>
+
                             <p class="card-text"> Marca: ${ data[i].marcaProducto } </p>
                             <p class="card-text">Precio compra: ${data[i].precioVenta }  </p>
-                            <p class="card-text">Precio compra: ${data[i].precioCompra }  </p>
                             <p class="card-text"> Cantidad del producto:  ${data[i].cantidad } </p>
+                                <a href="./pages/producto.php?id=${data[i].id}" class="btn btn-block btn-info" > Ver más </a>
                         </div>
                     </div>
                 </div>`;

@@ -12,7 +12,7 @@ function  getTotales () {
     $conected = new Conect("jose", "eltodasmias16");
     $conect = $conected->conectar();
 
-    $sql = "select   sum( total ) as total, sum( precioCompra )  as compraTotal, sum( precioVenta ) as totalVenta, sum(totalVenta) as ventaTotal from Producto; ";
+    $sql = "select   sum( total ) as total, sum(totalVenta) as ventaTotal from Producto;";
 
    $resulset =  $conect ->prepare( $sql );
    $resulset->execute();

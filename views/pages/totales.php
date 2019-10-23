@@ -10,16 +10,6 @@
         </div>
 
         <div class="form-group">
-            <label for="invertido" >  Total de la venta es:  </label>
-            <div id="invertido"> </div>
-        </div>
-
-        <div class="form-group">
-            <label for="total" > Compra total es:  </label>
-            <div id="compra"> </div> 
-        </div>
-
-        <div class="form-group">
             <label> Suma total del precio de compra </label>
             <div id="totalesVenta">
 
@@ -48,8 +38,6 @@
         for( i  in data  ) {
 
             content.innerHTML += `<input type="number" value="${data[i].total}" class="form-control" > `;
-            invertido.innerHTML += `<input type="text"  value="${data[i].totalVenta } " class="form-control" >`;
-            compra.innerHTML += `<input type="text" value="${data[i].compraTotal}" class="form-control" > `;
             totalesVenta.innerHTML += `<input type="text" value="${data[i].ventaTotal}" class="form-control" id="totalesVentas">`
         }
 
