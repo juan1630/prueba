@@ -31,7 +31,7 @@
             for ( i in data ){
                 
                 showProducts.innerHTML += `
-                <div class="col-md-3 mt-3 ml-2">
+                <div class="col-md-3 mt-3 ml-4">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
 

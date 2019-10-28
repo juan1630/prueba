@@ -6,6 +6,8 @@ if( isset( $_GET['id'] ) ){
 
     $findbyid = new findById($_GET['id']);
 
-   var_dump($findbyid->getById());
-
+      $json_send =  json_encode( $findbyid );
+        echo $json_send;
+}else {
+    header('Location: ../../home.php');
 }

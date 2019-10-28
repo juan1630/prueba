@@ -4,6 +4,7 @@ require_once ( dirname(__FILE__).'\conect.php' );
 class findById{
 
     public $id = 0;
+    public $rows = [];
 
 
     public function __construct( $argId ){
@@ -22,7 +23,12 @@ class findById{
         $resulset = $conected->prepare( $sql );
         $resulset->execute();
 
-        var_dump($resulset);
+        while ($resul = $resulset->fetch(PDO::FETCH_ASSOC ) ){
+                array_push( $this->rows = $resul );
+        }
+
+
+        return $this->rows;
 
     }
 

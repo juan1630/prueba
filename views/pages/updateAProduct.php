@@ -21,7 +21,7 @@ if(  isset($_GET["id"]) ){
 
     <h2 class="text-center" > Actualizar el producto </h2>
 
-    <form id="formUpdate" >
+    <form id="formUpdate" class="mt-3" >
 
 
 
@@ -36,7 +36,18 @@ if(  isset($_GET["id"]) ){
 
     const  getData = ()=> {
 
+    //EN ESTÁ AREÁ IRÁ LA PETICIÓN DEL TIPO GET
 
+        fetch('../controls/queries/controlFinById.php')
+            .then( res => {
+                console.log( res )
+                console.log( res.text() );
+            } )
+            .then( response => {
+                console.log( response );
+            }  )
+
+        renderForm();
 
     };
 
@@ -44,9 +55,26 @@ if(  isset($_GET["id"]) ){
 
         const formUpdate = document.getElementById('formUpdate');
 
-        formUpdate.innerHTML += `<div class="form-group">
+        formUpdate.innerHTML += "";
 
-</div>`;
+
+        formUpdate.innerHTML += `<div class="form-group">
+        <label for="nombreProduct" > Nombre del producto: </label>
+        <input type="text" name="nombreProduct" class="form-control" id="nombreProduct">
+</div>
+
+<div class="form-group" >
+
+        <label for="maracProduct" > Maraca del producto: </label>
+        <input type="text" name="marcaProduct" class="form-control" id="marcaProduct">
+</div>
+<div class="form-group" >
+
+        <label for="maracProduct" > Maraca del producto: </label>
+        <input type="text" name="marcaProduct" class="form-control" id="marcaProduct">
+</div>
+
+`;
     };
 
 
