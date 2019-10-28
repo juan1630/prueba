@@ -48,7 +48,7 @@
 
             }
         
-        }
+        };
 
         const getData = function (){
             fetch('../controls/queries/getProducts.php')

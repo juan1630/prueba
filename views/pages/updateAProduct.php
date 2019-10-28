@@ -38,18 +38,27 @@ if(  isset($_GET["id"]) ){
 
     //EN ESTÁ AREÁ IRÁ LA PETICIÓN DEL TIPO GET
 
-        fetch('../controls/queries/controlFinById.php')
-            .then( res => {
-                console.log( res )
+        fetch('../../controls/queries/controlFinById.php')
+            .then( (res) => {
                 console.log( res.text() );
+                return respuesta =  res.json();
             } )
-            .then( response => {
-                console.log( response );
+            .then( respuesta => {
+                console.log( respuesta );
+
             }  )
+            .catch( error  => {
+                console.log(error)
+            } );
 
         renderForm();
 
     };
+
+
+    // Dos letreros de 10
+   // 4 de 5
+   // 6 de 4
 
     const renderForm = () => {
 

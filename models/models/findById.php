@@ -4,19 +4,23 @@ require_once ( dirname(__FILE__).'\conect.php' );
 class findById{
 
     public $id = 0;
-    public $rows = [];
+
+
 
 
     public function __construct( $argId ){
 
         $this->id =$argId;
 
+
     }
 
 
     public function getById() {
 
-        $sql = " SELECT * FROM WHERE id = $this->id";
+        $rows = [];
+        $sql = "SELECT * FROM Producto WHERE id = $this->id";
+
         $conect = new Conect ("jose", "eltodasmias16" );
         $conected = $conect->conectar();
 
@@ -24,14 +28,18 @@ class findById{
         $resulset->execute();
 
         while ($resul = $resulset->fetch(PDO::FETCH_ASSOC ) ){
-                array_push( $this->rows = $resul );
+
+            array_push( $rows , $resul );
+
         }
 
+        return $rows;
 
-        return $this->rows;
 
-    }
+    } // fin de la funcion
 
-}
+} //  fin de la clase
+
+
 
 
