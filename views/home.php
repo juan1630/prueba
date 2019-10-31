@@ -1,15 +1,12 @@
 <?php  require_once '../includes/components/header.php' ?> 
-<?php require_once './components/sidebar.php';  ?>
+<?php require_once './components/sidebar.php' ?>
 
 <div class="col-md-10">
 
 <div class="container-fluid">
 <div  id="showPeoducts" class="row">
-    <!-- <div  class="col-md-12"> -->
-        <!-- <div  >
-        
-        </div> -->
-    <!-- </div> -->
+
+
 </div>
 
 </div>
@@ -54,7 +51,8 @@
             fetch('../controls/queries/getProducts.php')
             .then((resp)=>{ 
 
-            console.log( resp )
+            console.log( resp );
+
             return respuesta = resp.json()
 
             })

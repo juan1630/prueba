@@ -1,14 +1,22 @@
+<?php  require_once  '../../models/models/findById.php'; ?>
+
+
 <?php
-require_once  '../../models/models/findById.php';
 
+session_start();
+if( !$_SESSION['id'] ){
+    header('Location: ../../vews/home.php');
+}else {
 
-if( isset( $_GET['id'] ) ){
+    $id = $_SESSION['id'];
 
-    $findbyid = new findById($_GET['id']);
+    $findbyid = new findById($id );
     $productId = $findbyid->getById();
 
-      $json_send =  json_encode( $productId );
+    $json_send =  json_encode ( $productId );
 
-        echo $json_send;
+   echo $json_send;
+
 }
 
+?>

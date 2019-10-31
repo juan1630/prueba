@@ -15,6 +15,8 @@ if( !isset( $_GET['id'] ) ){
 } else {
     $product = new GetAProudcto($_GET['id']);
     $producto = $product->GetOneProduct();
+    session_start();
+    $_SESSION['id'] = $producto[0]['id'];
 
 }
 
@@ -48,7 +50,7 @@ if( !isset( $_GET['id'] ) ){
 
 <div class="col-md-2" >
 
-    <a href="./updateAProduct.php?id=<?php echo $producto[0]['id'];  ?>" class="btn btn-block btn-info margin-12" > Actualizar </a>
+    <a href="./updateAProduct.php?id=<?php echo $producto[0]['id']  ?>" class="btn btn-block btn-info margin-12" > Actualizar </a>
 
 </div>
 

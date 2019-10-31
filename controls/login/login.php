@@ -5,9 +5,9 @@ $email = $_POST['email'];
 $password = $_POST['pass'];
 
 if( !empty($email) && !empty($password) ){
-        
-    $ModelLogin = new Login($email, $password);
-    $ModelLogin->login();
+
+    session_start();
+
 
 }else {
     echo "Completa los campos";
