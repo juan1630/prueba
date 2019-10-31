@@ -18,7 +18,7 @@
     window.addEventListener("load", function getData() {
 
     showProducts = document.getElementById('showPeoducts');
-    showProducts.innerHTML= "";
+    showProducts.innerHTML += "";
     
 
         const renderCard = function (data) {
@@ -71,7 +71,3 @@
 })
 
 </script>
-
-
-
-<?php require_once '../includes/components/footer.php'  ?>

@@ -37,16 +37,16 @@
    
     border-bottom: 1px solid white;
     border-top:1px solid white;
-   
-    
 }
 
 </style>
 
-<div class="col-md-2 sidebar mt-2">
+ <div class="col-md-2 sidebar mt-2">
 
     <nav id="sidebar">
     <div class="sidebar-header">
+    
+    
         <img src="../assets/images/olinala.png" class="img-fluid mt-3"  alt="imagen de Ólinala Guerrero">
         <h3 class="mt-2"> Opciones </h3>
     </div>
@@ -72,6 +72,5 @@
        </ul>
 
 </nav>
-
 
 </div>

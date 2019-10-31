@@ -28,10 +28,10 @@ if(  isset($_GET["id"]) ){
 
 
     </div>
-    <button class="btn btn-info" id="buttonPrecios" > Actualizar precios </button>
+    <button class="btn btn-success btn-block" id="buttonPrecios" > Actualizar precios </button>
 </div>
 
-<div class="col-md-3 mt-4" id="precios" > </div>
+<div class="col-md-3 mt-4 offset-md-1" id="precios" > </div>
 
 <script>
 
@@ -39,22 +39,36 @@ if(  isset($_GET["id"]) ){
     const btn_precio = document.getElementById('buttonPrecios');
     const preciosDiv = document.getElementById('precios');
 
-    const showFormPrecios = (precios) => {
+    var products = [];
+
+    const showFormPrecios = () => {
+        console.log(products );
 
         preciosDiv.innerHTML = ``;
 
-
         preciosDiv.innerHTML += `
         <form>
-        <h3> Actualizar los precios </h3>
+           <h3> Actualizar los precios </h3>
     <div class="form-group" >
-
-        <label> Precio: </label>
-        <input type="text" name="precio" id="precio"  class="form-control" value="${precios[0].precioCompra}">
+        <label> Precio de compra: </label>
+        <input type="number" name="precio" id="precio"  class="form-control" value="${products[0][0].precioCompra }">
     </div>
-
-</form>
-        `;
+    <div class="form-group">
+        <label for="cantidad"> Cantidad: </label>
+        <input type="number" class="form-control" name="cantidad" id="cantidad" value="${products[0][0].cantidad}" >
+    </div>
+    <div class="form-group" >
+        <label for="precioVenta" > Precio de venta: </label>
+          <input  type="number" class="form-control" id="precioVenta" name="precioVenta"  value="${products[0][0].precioVenta}" >
+    </div>
+    <div class="form-group" >
+        <label for="total" > Total en venta: </label>
+        <input type="number" class="form-control" id="total" name="total" value="${products[0][0].total}" >
+    </div>
+    <div class="form-group" >
+        <button class="btn btn-info btn-block" > Actualizar </button>
+    </div>
+</form>`;
 
     };
 
@@ -62,6 +76,7 @@ if(  isset($_GET["id"]) ){
     const renderForm = (producto) => {
 
         formUpdate.innerHTML += ``;
+            products.push(producto);
 
         for( i in producto ){
             console.log( producto )
@@ -80,7 +95,6 @@ if(  isset($_GET["id"]) ){
         <label for="descProduct" > Descripción del producto: </label>
         <input type="text" name="descProduct" class="form-control" id="descProduct" value= "${producto[i].descripcion}" >
     </div>
-    <div class="form-group" id="buttons" > </div>
 </form>`;
 
         }
@@ -102,7 +116,6 @@ if(  isset($_GET["id"]) ){
             .then( (respuesta) => {
 
                 renderForm( respuesta )
-                showFormPrecios( respuesta)
 
             })
             .catch( error  => {
@@ -115,7 +128,7 @@ if(  isset($_GET["id"]) ){
 
     window.addEventListener('load', getData);
 
-    btn_precio.addEventListener('click', showFormPrecios);
+    btn_precio.addEventListener('click', showFormPrecios );
 
 
 </script>
