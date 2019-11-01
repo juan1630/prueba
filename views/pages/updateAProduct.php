@@ -1,8 +1,6 @@
 <?php  require_once '../../includes/components/header.php' ?>
 <?php require_once '../components/sidebar.php' ?>
 
-
-
 <?php
 
 
@@ -41,36 +39,100 @@ if(  isset($_GET["id"]) ){
 
     var products = [];
 
+
+    // ==============================================
+    //  LA MULTIPLICACIÓN DE LOS PRODUCTOS
+    //===============================================
+
+
+    const totalesVenta = () => {
+
+        const  totalesDiv = document.getElementById('totalDiv');
+
+        var precioVenta = document.getElementById('precioVenta').value;
+        var cantidad = document.getElementById('cantidad').value;
+        var totalVenta = precioVenta * cantidad;
+
+
+        totalesDiv.innerHTML = `<input type="number" class="form-control" id="totales" name="totales" value="${totalVenta}" class="form-oontrol"> `;
+
+    };
+
+    // =============================================
+    //  ENVIO DE LA PETICIÓN PARA EL UPDATE
+    // =============================================
+
+
+    const sendData = () => {
+
+        fetch('../../controls/queries/controlUpdate.php')
+            .then( res => {
+                console.log(res )
+            } )
+
+    };
+
+
+    // ==============================================
+    //  MOSTRAMOS EL FORMULARIO GENERAL
+    //===============================================
+
+
+
     const showFormPrecios = () => {
         console.log(products );
 
         preciosDiv.innerHTML = ``;
 
-        preciosDiv.innerHTML += `
-        <form>
+        preciosDiv.innerHTML += `<form>
            <h3> Actualizar los precios </h3>
     <div class="form-group" >
         <label> Precio de compra: </label>
         <input type="number" name="precio" id="precio"  class="form-control" value="${products[0][0].precioCompra }">
     </div>
-    <div class="form-group">
-        <label for="cantidad"> Cantidad: </label>
-        <input type="number" class="form-control" name="cantidad" id="cantidad" value="${products[0][0].cantidad}" >
-    </div>
+
     <div class="form-group" >
         <label for="precioVenta" > Precio de venta: </label>
           <input  type="number" class="form-control" id="precioVenta" name="precioVenta"  value="${products[0][0].precioVenta}" >
     </div>
+
+    <div class="form-group">
+        <label for="cantidad"> Cantidad: </label>
+        <input type="number" class="form-control" name="cantidad" id="cantidad" value="${products[0][0].cantidad}" >
+    </div>
+
     <div class="form-group" >
         <label for="total" > Total en venta: </label>
-        <input type="number" class="form-control" id="total" name="total" value="${products[0][0].total}" >
+       <div id="totalDiv" >
+
+             <input type="number" class="form-control" id="total" name="total" value="${products[0][0].total}" >
+
+</div>
+
     </div>
+
     <div class="form-group" >
-        <button class="btn btn-info btn-block" > Actualizar </button>
+         <a class="btn btn-block btn-info"  href="../../controls/queries/controlUpdate.php?id="${products[0][0].id}"> Actualizar </a>
     </div>
 </form>`;
 
+
+
+        const txtCantidad = document.getElementById('cantidad');
+        const btn_update = document.getElementById('btn_update');
+
+
+        txtCantidad.addEventListener('blur', totalesVenta);
+        btn_update.addEventListener('clic', sendData );
+
     };
+
+
+
+
+    // ==============================================
+    //  IMPRIMIMOS LA INFORMACIÓN DEL PRODUCTO
+    //===============================================
 
 
     const renderForm = (producto) => {
@@ -79,7 +141,8 @@ if(  isset($_GET["id"]) ){
             products.push(producto);
 
         for( i in producto ){
-            console.log( producto )
+
+
             formUpdate.innerHTML += `<form>
     <div class="form-group">
         <label for="nombreProduct" > Nombre del producto: </label>
@@ -101,6 +164,9 @@ if(  isset($_GET["id"]) ){
     };
 
 
+    // ==============================================
+    //  OBTENEMOS LA INFORMACIÓN DEL PRODUCTO
+    //===============================================
 
     const  getData = ()=> {
 
