@@ -22,3 +22,10 @@
 -- alter table Producto add totalVenta numeric;
 
 -- select sum( total ) as total, sum( precioCompra )  as compraTotal, sum( precioVenta ) as totalVenta from Producto;
+
+
+-- ESTE ES UN PRODUCTO DE PRUEBA QUE SE INSERTO
+
+
+
+-- insert into Producto values (null, "Lapiz de prueba", "Mapped", 1.50, 3.00, 20, 60, "Este es un lapiz para probar la sentecia update" , 60);

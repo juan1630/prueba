@@ -5,10 +5,18 @@ require_once  'conect.php';
 class updateAProduct {
 
     public  $rows = [];
+    public  $id = 0;
+    public  $nombre = "";
+    public $marca = "";
+    public $desc = "";
 
-    public function __construct( $argId  ) {
 
-        $this->rows = $argId;
+    public function __construct( $argId, $argNombre, $argMarca, $argDes  ) {
+
+        $this->id = $argId;
+        $this->nombre = $argNombre;
+        $this->marca = $argMarca;
+        $this->desc = $argDes;
 
     }
 
@@ -17,11 +25,19 @@ class updateAProduct {
 
         $conect = new Conect();
         $conectar = $conect->conectar();
+        $data = [$this->nombre, $this->marca, $this->desc];
 
 
-        $sql = "update";
+        $sql = "UPDATE Producto SET nombreProducto = ?, marcaProducto = ? , descripcion = ? where id = ?; ";
 
-        $conectar->prepare( $sql );
+       $sqlPrepared = $conectar->prepare( $sql );
+       $result = $sqlPrepared->execute($data );
+
+       if($result){
+           return "Consulta hecha";
+       }else {
+           return "No se ejecuto";
+       }
 
     }
 

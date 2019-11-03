@@ -158,6 +158,9 @@ if(  isset($_GET["id"]) ){
         <label for="descProduct" > Descripción del producto: </label>
         <input type="text" name="descProduct" class="form-control" id="descProduct" value= "${producto[i].descripcion}" >
     </div>
+    <div class="form-group" >
+                   <input type="submit" class="btn btn-info btn-block" value="Enviar" >
+</div>
 </form>`;
 
         }
