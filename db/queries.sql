@@ -29,3 +29,31 @@
 
 
 -- insert into Producto values (null, "Lapiz de prueba", "Mapped", 1.50, 3.00, 20, 60, "Este es un lapiz para probar la sentecia update" , 60);
+
+-- select * from Producto where id = 20;
+
+-- Esta sentencia es para el update
+
+-- update Producto set nombreProducto = 4, marcaProducto = "Marca", descripcion = "Este sigue siendo un lapiza de prueba" where id = 20;
+
+
+-- Nota en esta versión el Delete necesita permisos cuando se quiere eliminar todos los registros
+
+
+
+-- select count( cantidad ) as 'Cantidad de los productos' from Producto;
+
+-- la funcio count nos cuenta las filas de los registros
+
+
+-- select sum(cantidad) as 'Suma de los productos registrados' from Producto;
+
+-- la funcion suma nos suma los registros de un campo especifico en este caso la cantidad
+
+
+-- ESTA SERÁ LA CONSULTA PARA LA FUNCIÓN QUE NOS MOSTRARÁ LOS PRODUCTOS QUE ESTÁN PROXIMOS A AGOTARSE
+
+-- Esta funcion se debe de implementar despues de que la sentencia update haga lo correspondiente
+-- select * from Producto where cantidad <= 5;
+
+

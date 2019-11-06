@@ -6,15 +6,11 @@ class findById{
     public $id = 0;
 
 
-
-
     public function __construct( $argId ){
 
         $this->id =$argId;
 
-
     }
-
 
     public function getById() {
 
@@ -43,3 +39,4 @@ class findById{
 
 
 
+?>
