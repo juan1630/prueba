@@ -1,22 +1,6 @@
 <?php  require_once '../../includes/components/header.php' ?>
 <?php require_once '../components/sidebar.php' ?>
 
-<?php
-
-
-if(  isset($_GET["id"]) ){
-
-
-}else {
-    header('Location: ../home.php');
-}
-
-
-?>
-
-
-
-
 <div class="col-md-3 offset-md-1 mt-4" >
 
     <h2 class="text-center" > Actualizar el producto </h2>
@@ -43,6 +27,25 @@ if(  isset($_GET["id"]) ){
     // ==============================================
     //  LA MULTIPLICACIÓN DE LOS PRODUCTOS
     //===============================================
+
+    // VALIDACIÓN DEL FORMULARIO
+
+
+    const validar = (aForm) => {
+
+        if( aForm.get('nombre') == null || aForm.get('nombre').length == 0 ){
+            alert('Falta algun campo')
+            validado = false;
+        }else if( aForm.get('marca') == null || aForm.get('marca').length == 0 ){
+            alert('Falta algun campo')
+            validado = false;
+        } else if(aForm.get('desc') == "" ){
+            alert('Falta agregar una descripcion')
+            validado = false;
+        }
+
+        return validado = true;
+    };
 
 
     const totalesVenta = () => {
@@ -115,19 +118,11 @@ if(  isset($_GET["id"]) ){
     </div>
 </form>`;
 
-
-
         const txtCantidad = document.getElementById('cantidad');
-        const btn_update = document.getElementById('btn_update');
-
-
         txtCantidad.addEventListener('blur', totalesVenta);
-        btn_update.addEventListener('clic', sendData );
+
 
     };
-
-
-
 
     // ==============================================
     //  IMPRIMIMOS LA INFORMACIÓN DEL PRODUCTO
@@ -137,39 +132,66 @@ if(  isset($_GET["id"]) ){
     const renderForm = (producto) => {
 
         formUpdate.innerHTML = ``;
-        console.log( products )
-            products.push(producto);
+
+        products.push(producto);
 
         for( i in producto ){
-
-
-            formUpdate.innerHTML += `<form>
+            formUpdate.innerHTML += `<form id="formUpdateText">
     <div class="form-group">
         <label for="nombreProduct" > Nombre del producto: </label>
-        <input type="text" name="nombreProduct" class="form-control" id="nombreProduct" value="${producto[i].nombreProducto}" >
+        <input type="text" name="nombre" class="form-control" id="nombreProduct" value="${producto[i].nombreProducto}" >
     </div>
     <div class="form-group" >
 
         <label for="maracProduct" > Maraca del producto: </label>
-        <input type="text" name="marcaProduct" class="form-control" id="marcaProduct" value="${producto[i].marcaProducto}" >
+        <input type="text" name="marca" class="form-control" id="marcaProduct" value="${producto[i].marcaProducto}" >
     </div>
     <div class="form-group">
 
         <label for="descProduct" > Descripción del producto: </label>
-        <input type="text" name="descProduct" class="form-control" id="descProduct" value= "${producto[i].descripcion}" >
+        <input type="text" name="desc" class="form-control" id="descProduct" value= "${producto[i].descripcion}" >
     </div>
     <div class="form-group" >
-               <input type="submit" id="btnActualizar" class="btn btn-info btn-block" value="Actualizar " />
+               <input type="button" id="btnActualizar" class="btn btn-info btn-block" value="Actualizar" >
 </div>
 </form>`;
 
-            const  btnActualizar = document.getElementById('btnActualizar');
-            btnActualizar.addEventListener('clic', ()=> {
-                console.log("Ejecuta");
-            })
 
-        }
+
+            const  btnActualizar = document.getElementById('btnActualizar');
+            const formUpdateTxt = document.getElementById('formUpdateText');
+
+
+            btnActualizar.addEventListener('click', () => {
+
+                formValidate = new FormData( formUpdateTxt );
+
+                if(validar(  formValidate )){
+
+                    config =  {
+                        method: 'POST',
+                        body: formValidate
+                    };
+
+                    fetch('../../controls/queries/contorlUpdateProduct.php', config)
+                        .then( res => {
+                            console.log( res )
+                           return  res.text();
+                        })
+                        .then( resultado => {
+                            console.log( resultado )
+                        })
+                        .catch( error => {
+                            console.log( error )
+                        })
+                }
+            });
+
+
+    }
+
     };
+
 
 
     // ==============================================

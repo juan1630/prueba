@@ -102,11 +102,11 @@
             }else if( aForm.get('compra') ==""  ){
                 alert('Falta algún campo')
                 validado = false;
-            }
-            else if(aForm.get('descripcion') == "" ){
+            }else if(aForm.get('descripcion') == "" ){
                 alert('Falta agregar una descripcion')
                 validado = false;
-            } else if(aForm.get('venta') =="" ){
+            }
+            else if(aForm.get('venta') =="" ){
                 alert('Falta algún campo')
                 validado = false;
             }else if(aForm.get('cantidad') == ""  ){
@@ -117,7 +117,7 @@
                 alert ("El campo total está vacio")
             }
           return  validado = true;
-        }
+        };
 
         
 
@@ -128,30 +128,24 @@ const sendData = function (datos) {
     config = {
         method: 'POST',
          body: datos
+    };
 
-    }
 
-
-    
     products = [];
 
     fetch( url,  config)
     
     .then( (resp) => {
-
         return resp.json();
-        
     })
-    
     .then( (res) => {
           console.log( res );
     })
-    
     .catch( error =>  {
         console.log(error)
     })
 
-}
+};
     
 
         formEnvio.addEventListener('submit', (e)=> {
@@ -165,11 +159,10 @@ const sendData = function (datos) {
             alert("Datos guardados");
             formEnvio.reset();
 
-       
         }
         
         
-        })
+        });
 
 
         // Termina el script del formulario

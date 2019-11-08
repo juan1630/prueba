@@ -15,6 +15,7 @@ if( !isset( $_GET['id'] ) ){
 } else {
     $product = new GetAProudcto($_GET['id']);
     $producto = $product->GetOneProduct();
+
     session_start();
     $_SESSION['id'] = $producto[0]['id'];
 
