@@ -52,12 +52,15 @@
 
         const  totalesDiv = document.getElementById('totalDiv');
 
-        var precioVenta = document.getElementById('precioVenta').value;
-        var cantidad = document.getElementById('cantidad').value;
-        var totalVenta = precioVenta * cantidad;
+        let precioVenta = document.getElementById('precioVenta').value;
+        let cantidad = document.getElementById('cantidad').value;
+        let precioCompra = document.getElementById('precioCompra').value;
+        let  totalVenta = precioVenta * cantidad;
+        let  totalCompra =  precioCompra * cantidad;
 
-
-        totalesDiv.innerHTML = `<input type="number" class="form-control" id="totales" name="totales" value="${totalVenta}" class="form-oontrol"> `;
+        totalesDiv.innerHTML = `<input type="number" class="form-control mb-2" id="totalVenta" name="totalVentas" value="${totalVenta}" class="form-control">
+    <label  for="totalCompra" > Total de la compra: </label>
+    <input type="number" class="form-control mt-2" id="totalCompra" value="${totalCompra}"  name="totalCompra" >`;
 
     };
 
@@ -65,14 +68,12 @@
     //  ENVIO DE LA PETICIÓN PARA EL UPDATE
     // =============================================
 
-
     const sendData = () => {
 
         fetch('../../controls/queries/controlUpdate.php')
             .then( res => {
                 console.log(res )
             } )
-
     };
 
 
@@ -86,11 +87,11 @@
 
         preciosDiv.innerHTML = ``;
 
-        preciosDiv.innerHTML += `<form>
+        preciosDiv.innerHTML += `<form id="formUpdatePrice" method="post" >
            <h3> Actualizar los precios </h3>
     <div class="form-group">
-        <label> Precio de compra: </label>
-        <input type="number" name="precio" id="precio"  class="form-control" value="${products[0][0].precioCompra }" />
+        <label for="precioCompra"> Precio de compra: </label>
+        <input type="number" name="precioCompra" id="precioCompra"  class="form-control" value="${products[0][0].precioCompra }" />
     </div>
 
     <div class="form-group" >
@@ -104,21 +105,25 @@
     </div>
 
     <div class="form-group" >
-        <label for="total" > Total en venta: </label>
+        <label for="totalVenta" > Total en venta: </label>
        <div id="totalDiv" >
 
              <input type="number" class="form-control" id="total" name="total" value="${products[0][0].total}" />
-
 </div>
-
     </div>
-
     <div class="form-group" >
-         <a class="btn btn-block btn-info"  href="../../controls/queries/controlUpdate.php?id="${products[0][0].id}"> Actualizar </a>
+         <input type="submit" class="btn btn-block btn-info" id="btnSendPrice" value="Actualizar" />
     </div>
 </form>`;
 
         const txtCantidad = document.getElementById('cantidad');
+        const btnSendPrice = document.getElementById('btnSendPrice')
+
+        btnSendPrice.addEventListener('click', ()=> {
+
+
+        });
+
         txtCantidad.addEventListener('blur', totalesVenta);
 
 
@@ -176,10 +181,15 @@
                     fetch('../../controls/queries/contorlUpdateProduct.php', config)
                         .then( res => {
                             console.log( res )
-                           return  res.text();
+                           return  res.text()
                         })
                         .then( resultado => {
-                            console.log( resultado )
+                                console.log( resultado )
+                            if( resultado == "Consulta hecha" ){
+                                formUpdateTxt.reset();
+                                alert("Proudcto actualizado");
+                            }
+
                         })
                         .catch( error => {
                             console.log( error )

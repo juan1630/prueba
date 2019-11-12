@@ -23,9 +23,9 @@ class updateAProduct {
 
     public function updateAProudct (){
 
-        $conect = new Conect();
+        $conect = new Conect('jose', 'eltodasmias16');
         $conectar = $conect->conectar();
-        $data = [$this->nombre, $this->marca, $this->desc];
+        $data = [$this->nombre, $this->marca, $this->desc, $this->id];
 
 
         $sql = "UPDATE Producto SET nombreProducto = ?, marcaProducto = ? , descripcion = ? where id = ?; ";
