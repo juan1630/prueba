@@ -12,9 +12,10 @@ class InsertData {
     public $total;
     public $descripcion;
     public $totalesVenta = 0;
+    public $routeImage = "";
 
     
-    function __construct($arNombre, $arMarca, $arVenta, $arCompra, $arCantidad, $total, $descripcion, $arTotalesVenta) {
+    function __construct($arNombre, $arMarca, $arVenta, $arCompra, $arCantidad, $total, $descripcion, $arTotalesVenta, $argRouteImage  ) {
 
         $this->nombre = $arNombre;
         $this->marca = $arMarca;
@@ -24,6 +25,8 @@ class InsertData {
         $this->total = $total;
         $this->totalesVenta = $arTotalesVenta;
         $this->descripcion = $descripcion;
+        $this->routeImage = $argRouteImage;
+
 
     }
 
@@ -33,7 +36,7 @@ class InsertData {
         
         $conected = new Conect("jose", "eltodasmias16");
         $conect = $conected->conectar();
-        $data = [ $this->nombre, $this->marca, $this->compra, $this->venta, $this->cantidad, $this->total, $this->descripcion, $this->totalesVenta ];
+        $data = [ $this->nombre, $this->marca, $this->compra, $this->venta, $this->cantidad, $this->total, $this->descripcion, $this->totalesVenta, $this->routeImage ];
 
         $error = false;
         $ok = false;
@@ -41,7 +44,7 @@ class InsertData {
         try {
 
         
-        $consulta = "INSERT INTO Producto VALUES (null,?, ?, ?, ?, ?, ?, ?, ? )";
+        $consulta = "INSERT INTO Producto VALUES (null,?, ?, ?, ?, ?, ?, ?, ?, ? )";
         $consultaPreparada = $conect->prepare($consulta);
         $result = $consultaPreparada->execute($data);
         

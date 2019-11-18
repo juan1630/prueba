@@ -7,7 +7,7 @@
             <div class="col-md-11 offset-md-1">
                 <h2 class="center"> Agregar el producto</h2>
 
-                <form id="formulario" >
+                <form id="formulario" enctype = "multipart/form-data" >
                 <div class="row">
                     <div class="col-md-4">
 
@@ -125,6 +125,8 @@ const sendData = function (datos) {
 
     url =  "../../controls/queries/insertProduct.php";
 
+    // url =  "../../controls/queries/pruebaIkages.php";
+
     config = {
         method: 'POST',
          body: datos
@@ -136,6 +138,7 @@ const sendData = function (datos) {
     fetch( url,  config)
     
     .then( (resp) => {
+        console.log( resp.text() )
         return resp.json();
     })
     .then( (res) => {

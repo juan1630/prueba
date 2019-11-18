@@ -23,7 +23,7 @@ class GetData {
         // SELECT * FROM producto LIMIT 5;
 
 
-        $sql = "SELECT * FROM producto LIMIT 6";
+        $sql = "SELECT * FROM producto";
     
         $statemnet = $conect->prepare($sql);
         $statemnet->execute();

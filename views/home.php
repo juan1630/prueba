@@ -29,6 +29,9 @@
                 
                 showProducts.innerHTML += `
                 <div class="col-md-3 mt-3 ml-4">
+                    <div>
+                        <img src="${data[i].imageRoute }" >
+                    </div>
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
 
