@@ -53,12 +53,10 @@ class InsertData {
 
             return  "Producto insertado";
 
-
         }else {
 
           $error['errorInsert'] = "Algo pasó al insertar el producto";
           return $error;
-       
         }
 
 

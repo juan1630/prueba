@@ -57,3 +57,42 @@
 -- select * from Producto where cantidad <= 5;
 
 
+-- use papelreria;
+
+-- select * from Producto where nombreProducto like '%gises%';
+
+-- select * from Producto where id = 20;
+
+-- select * from Producto where marcaProducto like '%xerox%';
+
+-- update Producto set nombreProducto = 4, marcaProducto = "Marca", descripcion = "Este sigue siendo un lapiza de prueba" where id = 20;
+-- Nota en esta versión el Delete necesita permisos cuando se quiere eliminar todos los registros
+-- Esta funcion se debe de implementar despues de que la sentencia update haga lo correspondiente
+-- select * from Producto where cantidad <= 5;
+
+-- update Producto set precioCompra = ? ,precioVenta = ?,  cantidad = ?, total = ?, totalVenta = ? where id = ?;
+
+
+
+-- create table Usuarios (
+--                          id int (11) not null auto_increment,
+ --                         nombre varchar(100),
+--                          apellidos varchar(100),
+--                          img varchar(100),
+--                          statu varchar(15),
+--                      puesto varchar (20),
+--                       constraint pk_usuarios primary key (id)
+-- );
+
+-- select * from Producto;
+
+
+-- insert into Usuarios values (null, 'Emma', 'Guerrero','../../assets/images/olinala.png', 'true', 'Jefa' );
+
+-- select * from Producto;
+
+-- Se usó para las pruebas de las imagenes
+
+-- delete from Producto where id= 50;
+-- delete from Producto where id= 51;
+-- delete from Producto where id= 52;

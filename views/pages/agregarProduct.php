@@ -124,7 +124,6 @@
 const sendData = function (datos) {
 
     url =  "../../controls/queries/insertProduct.php";
-
     // url =  "../../controls/queries/pruebaIkages.php";
 
     config = {
@@ -138,11 +137,28 @@ const sendData = function (datos) {
     fetch( url,  config)
     
     .then( (resp) => {
-        console.log( resp.text() )
+        // Aca irán las demas validaciones
         return resp.json();
     })
     .then( (res) => {
+
           console.log( res );
+          if(res.mensaje == "Producto insertado"){
+                alert( res.mensaje );
+                return;
+          }else if( res.mensaje  == "Producto no insertado" ) {
+                alert("Producto no insertado");
+                return;
+          }else if( res.mensaje  == "Imagen grande" ){
+              alert("Imagen muy grande")
+              return;
+          }else if( res.mensaje == "Archvio no valido" ){
+              alert("Archivo no valido")
+              return;
+          }else if(  res.mensaje == "Algo paso" ) {
+              alert("Algo pasó");
+              return;
+          }
     })
     .catch( error =>  {
         console.log(error)
@@ -159,7 +175,6 @@ const sendData = function (datos) {
         if (validar(formulario)){
 
             sendData(formulario);
-            alert("Datos guardados");
             formEnvio.reset();
 
         }

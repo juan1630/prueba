@@ -18,44 +18,48 @@ require_once '../../models/models/insertData.php';
     $typeImage = $_FILES['imagen']['type'];
     $tempImage = $_FILES['imagen']['tmp_name'];
     $sizeImage = $_FILES['imagen']['size'];
-
-    $route = "../assets/images/".basename( $imageName );
+    $route = "../../assets/images/".basename( $imageName );
+    $roureDB = "../assets/images/".basename( $imageName );
 
 
     if( $typeImage == "jpg" || $typeImage = "jpeg" || $typeImage == "png" ) {
 
-        if($sizeImage <= 50000) {
+        if($sizeImage <= 5000000) {
             if( move_uploaded_file( $tempImage, $route ) ) {
 
-
-                $insertData = new InsertData($nombre, $marca, $compra, $venta, $cantidad, $totalesCompras,$descripcion ,$totalVenta, $route );
+                $insertData = new InsertData( $nombre, $marca, $compra, $venta, $cantidad, $totalesCompras, $descripcion ,$totalVenta, $roureDB );
                 $resp = $insertData->insertProduct();
 
-                if( $resp === "producto insertado" ){
-
+                if( $resp === "Producto insertado" ){
                     $respuesta['mensaje'] = $resp;
                     $response = json_encode($respuesta);
                     echo $response;
-
                 }else {
 
-                    echo "Pasó algo";
-                }
+                        $respuesta['mensaje'] = "Proudcto no  insertado";
+                        $response = json_encode( $respuesta );
 
+                }
             }
         }else {
-            echo "El tamaño de la imagen es muy grande";
+            $respuesta['mensaje'] = "Imagen  grande";
+            echo json_encode( $respuesta );
         }
 
     }else {
-        echo "El tipo de archivo no es permitido";
+        $respuesta['mensaje'] = "Archivo no valido";
+
+        echo  json_encode( $respuesta );
     }
 
 
 
   }else if($_POST == null){
-    echo "Error en la consulta";
-}
+
+      $respuesta['mensaje'] = "Algo paso";
+      echo json_encode( $respuesta );
+
+  }
 
 
 ?>
