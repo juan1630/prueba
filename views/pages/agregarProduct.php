@@ -142,26 +142,31 @@ const sendData = function (datos) {
     })
     .then( (res) => {
 
+        let ok = true;
+
           console.log( res );
           if(res.mensaje == "Producto insertado"){
                 alert( res.mensaje );
-                return;
+                return ok= false;
           }else if( res.mensaje  == "Producto no insertado" ) {
                 alert("Producto no insertado");
-                return;
+                return ok =false;
           }else if( res.mensaje  == "Imagen grande" ){
               alert("Imagen muy grande")
-              return;
+              return false;
           }else if( res.mensaje == "Archvio no valido" ){
               alert("Archivo no valido")
-              return;
+              return ok = false;
           }else if(  res.mensaje == "Algo paso" ) {
               alert("Algo pasó");
-              return;
+              return ok = false;
           }
+
+          return ok;
     })
     .catch( error =>  {
         console.log(error)
+        alert(error)
     })
 
 };
@@ -174,12 +179,18 @@ const sendData = function (datos) {
             
         if (validar(formulario)){
 
-            sendData(formulario);
-            formEnvio.reset();
+          if(sendData(formulario)) {
+              formEnvio.reset();
+          }else {
+              alert("No se pudó enviar")
+          }
 
+
+        }else {
+            alert("El formulario no es valido")
         }
-        
-        
+
+
         });
 
 

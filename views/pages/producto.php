@@ -1,17 +1,11 @@
 <?php  require_once '../../includes/components/header.php' ?>
 <?php require_once '../components/sidebar.php' ?>
-
 <?php require_once '../../models/models/GetAProudcto.php' ?>
 
+
 <?php
-
-// $id = $_GET['id'];
-
-
 if( !isset( $_GET['id'] ) ){
-
     header('Location: ../home.php');
-
 } else {
     $product = new GetAProudcto($_GET['id']);
     $producto = $product->GetOneProduct();
@@ -20,15 +14,14 @@ if( !isset( $_GET['id'] ) ){
     $_SESSION['id'] = $producto[0]['id'];
 
 }
-
-
-
-
 ?>
 
 <div class="col-md-3 offset-md-1 mt-4">
 
         <div class="card" style="width: 20rem;" >
+            <div class="card-img-top" >
+                <img src=" <?php echo $producto[0]['imgRoute'] ?> ">
+            </div>
                 <div class="card-body">
 
                     <h5 class="card-title"> Nombre del producto: <?php  echo $producto[0]["nombreProducto"]; ?> </h5>
@@ -57,15 +50,9 @@ if( !isset( $_GET['id'] ) ){
 
 <style>
 
-
     .margin-12{
         margin-top: 8em;
         margin-left: 4em;
     }
-
-
 </style>
 
-<script>
-
-</script>
