@@ -105,21 +105,42 @@
     </div>
 
     <div class="form-group" >
-        <label for="totalVenta" > Total en venta: </label>
-       <div id="totalDiv" >
-
+        <label for="totalVenta" > Total de la compra: </label>
+       <div id="totalDiv">
              <input type="number" class="form-control" id="total" name="total" value="${products[0][0].total}" />
-</div>
+        </div>
     </div>
+
+
     <div class="form-group" >
-         <input type="submit" class="btn btn-block btn-info" id="btnSendPrice" value="Actualizar" />
+         <input type="button" class="btn btn-block btn-info" id="btnSendPrice" value="Actualizar" />
     </div>
 </form>`;
 
         const txtCantidad = document.getElementById('cantidad');
-        const btnSendPrice = document.getElementById('btnSendPrice')
+        const btnSendPrice = document.getElementById('btnSendPrice');
+        const formDataUpdate = document.getElementById('formUpdatePrice');
 
         btnSendPrice.addEventListener('click', ()=> {
+            let formPrice = new FormData( formDataUpdate );
+
+            let conf = {
+              method: 'POST',
+              body: formPrice
+            };
+
+            fetch('../../controls/queries/updatePrice.php', conf)
+                .then(( res ) => {
+                    return res.json();
+                })
+                .then( res => {
+                    if( res.mensaje == "ok"  ){
+                        alert("Precios actualizados")
+                    }else if(res.mensaje == "fallo" ) {
+                        alert("Algó fallo")
+                    }
+
+                } )
 
 
         });
@@ -208,7 +229,7 @@
     //  OBTENEMOS LA INFORMACIÓN DEL PRODUCTO
     //===============================================
 
-    const  getData = () => {
+    const getData = () => {
 
         fetch(  '../../controls/queries/controlFinById.php' )
             .then( (res) => {

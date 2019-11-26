@@ -1,6 +1,6 @@
 <?php
 
-require_once './conect.php';
+require_once 'conect.php';
 
 class  modelUpdatePrice {
 
@@ -26,9 +26,9 @@ class  modelUpdatePrice {
     public function updateProductPrice (){
 
 
-            $conect = new Conect();
+            $conect = new Conect('jose', 'eltodasmias16');
             $conectar = $conect->conectar();
-            $datos = [ $this->precioCompra, $this->precioVenta, $this->cantidad, $this->total, $this->totalVenta ];
+            $datos = [ $this->precioCompra, $this->precioVenta, $this->cantidad, $this->total, $this->totalVenta, $this->id ];
 
             $query = "update Producto set precioCompra = ? ,precioVenta = ?,  cantidad = ?, total = ?, totalVenta = ? where id = ?;";
 
