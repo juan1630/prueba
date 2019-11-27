@@ -1,5 +1,4 @@
 <?php
-
 require_once '../../models/models/insertData.php';
 
   if( isset($_POST) ){
@@ -42,7 +41,7 @@ require_once '../../models/models/insertData.php';
                 }
             }
         }else {
-            $respuesta['mensaje'] = "Imagen  grande";
+            $respuesta['mensaje'] = "Imagen grande";
             echo json_encode( $respuesta );
         }
 
@@ -54,7 +53,7 @@ require_once '../../models/models/insertData.php';
 
 
 
-  }else if($_POST == null){
+  }else {
 
       $respuesta['mensaje'] = "Algo paso";
       echo json_encode( $respuesta );

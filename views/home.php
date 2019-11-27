@@ -29,10 +29,10 @@
                 
                 showProducts.innerHTML += `
                 <div class="col-md-3 mt-3 ml-4">
-                    <div class="card-img-top" >
-                        <img src="${data[i].imageRoute }" >
-                    </div>
+
+
                     <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="${data[i].imageRoute }" >
                         <div class="card-body">
 
                             <h5 class="card-title"> Nombre: ${ data[i].nombreProducto} </h5>
