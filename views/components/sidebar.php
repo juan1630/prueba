@@ -2,11 +2,8 @@
 
 .sidebar {
     width:auto;
-    height:625px;
-    background: #7F00FF;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #E100FF, #7F00FF);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #E100FF, #7F00FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    height: 625px;
+    border-top: 1px solid white;
 }
 
 
@@ -41,9 +38,9 @@
 
 </style>
 
- <div class="col-md-2 sidebar mt-2">
+ <div class="col-md-2 sidebar bg-dark ">
 
-    <nav id="sidebar">
+    <nav id="sidebar"  >
     <div class="sidebar-header">
     
     
