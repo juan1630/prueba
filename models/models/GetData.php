@@ -22,13 +22,10 @@ class GetData {
 
         // SELECT * FROM producto LIMIT 5;
 
-
         $sql = "SELECT * FROM producto";
     
         $statemnet = $conect->prepare($sql);
         $statemnet->execute();
-    
-
 
         while($result = $statemnet->fetch(PDO::FETCH_ASSOC)){
             
@@ -36,10 +33,7 @@ class GetData {
 
                 // Sintaxis del array push
         }
-    
-
         return $rows;
-    
     }
 
 }
