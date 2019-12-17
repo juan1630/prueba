@@ -238,8 +238,9 @@
 
             })
             .then( (respuesta) => {
+
+                renderForm( respuesta );
                 console.log( respuesta );
-                renderForm( respuesta )
 
             })
             .catch( error  => {

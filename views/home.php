@@ -17,6 +17,7 @@
 
     window.addEventListener("load", function getData() {
 
+
     showProducts = document.getElementById('showPeoducts');
     showProducts.innerHTML += "";
     
@@ -60,10 +61,13 @@
 
             })
             .then( (respuesta) => {
-                renderCard(respuesta)
+                alertify.success('Success message');
+                renderCard(respuesta);
             })
 
             .catch( (error)=>{
+
+                alertify.error(error);
                 console.log(error);
 
             } );
